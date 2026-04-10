@@ -1,0 +1,167 @@
+# ============================================================
+# Unity 6 .gitattributes
+# ============================================================
+
+# Macro definitions
+# Unity YAML files — use SmartMerge, treat as text with LF endings
+[attr]unity-yaml -text merge=unityyamlmerge eol=lf diff
+
+# Binary LFS files
+[attr]lfs -text filter=lfs diff=lfs merge=lfs
+
+# Default: auto-normalize line endings for all text files
+* text=auto
+
+# ============================================================
+# Unity YAML Assets (SmartMerge + LF)
+# ============================================================
+*.unity          unity-yaml
+*.prefab         unity-yaml
+*.asset          unity-yaml
+*.meta           unity-yaml
+*.mat            unity-yaml
+*.anim           unity-yaml
+*.controller     unity-yaml
+*.overrideController unity-yaml
+*.physicMaterial unity-yaml
+*.physicsMaterial2D unity-yaml
+*.playable       unity-yaml
+*.mask           unity-yaml
+*.brush          unity-yaml
+*.flare          unity-yaml
+*.fontsettings   unity-yaml
+*.guiskin        unity-yaml
+*.mixer          unity-yaml
+*.shadervariants unity-yaml
+*.spriteatlas    unity-yaml
+*.terrainlayer   unity-yaml
+*.renderTexture  unity-yaml
+*.signal         unity-yaml
+*.scenetemplate  unity-yaml
+
+# Assembly definitions (Unity-specific JSON-like, keep as text)
+*.asmdef         eol=lf
+*.asmref         eol=lf
+
+# ============================================================
+# NavMesh and Lighting — large generated binary assets → LFS
+# ============================================================
+*-[Nn]av[Mm]esh.asset  lfs
+*[Ll]ighting[Dd]ata.asset lfs
+*[Oo]cclusion[Cc]ulling[Dd]ata.asset lfs
+
+# ============================================================
+# Images → LFS
+# ============================================================
+*.jpg     lfs
+*.jpeg    lfs
+*.png     lfs
+*.apng    lfs
+*.gif     lfs
+*.bmp     lfs
+*.tga     lfs
+*.tiff    lfs
+*.tif     lfs
+*.iff     lfs
+*.pict    lfs
+*.dds     lfs
+*.exr     lfs
+*.hdr     lfs
+*.psd     lfs
+*.webp    lfs
+*.svg     lfs
+*.svgz    lfs
+*.xcf     lfs
+
+# ============================================================
+# Audio → LFS
+# ============================================================
+*.mp3     lfs
+*.ogg     lfs
+*.wav     lfs
+*.aiff    lfs
+*.aif     lfs
+*.mod     lfs
+*.it      lfs
+*.s3m     lfs
+*.xm      lfs
+
+# ============================================================
+# Video → LFS
+# ============================================================
+*.mov     lfs
+*.avi     lfs
+*.mp4     lfs
+*.mpeg    lfs
+*.mpg     lfs
+*.ogv     lfs
+*.webm    lfs
+*.wmv     lfs
+*.asf     lfs
+
+# ============================================================
+# 3D Models → LFS
+# ============================================================
+*.fbx     lfs
+*.obj     lfs
+*.blend   lfs
+*.blender lfs
+*.dae     lfs
+*.3ds     lfs
+*.mb      lfs
+*.ma      lfs
+*.max     lfs
+*.c4d     lfs
+*.lwo     lfs
+*.lwo2    lfs
+*.abc     lfs
+*.3dm     lfs
+*.glb     lfs
+*.gltf    lfs
+
+# ============================================================
+# Fonts → LFS
+# ============================================================
+*.ttf     lfs
+*.otf     lfs
+*.woff    lfs
+*.woff2   lfs
+
+# ============================================================
+# Executables / Libraries → LFS
+# ============================================================
+*.exe     lfs
+*.dll     lfs
+*.so      lfs
+*.dylib   lfs
+*.pdb     lfs
+*.mdb     lfs
+
+# ============================================================
+# Archives → LFS
+# ============================================================
+*.zip     lfs
+*.7z      lfs
+*.gz      lfs
+*.rar     lfs
+*.tar     lfs
+*.unitypackage lfs
+
+# ============================================================
+# Source / Config files — plain text, normalized endings
+# ============================================================
+*.cs      text eol=lf
+*.js      text eol=lf
+*.ts      text eol=lf
+*.json    text eol=lf
+*.xml     text eol=lf
+*.yaml    text eol=lf
+*.yml     text eol=lf
+*.txt     text eol=lf
+*.md      text eol=lf
+*.shader  text eol=lf
+*.cginc   text eol=lf
+*.hlsl    text eol=lf
+*.glsl    text eol=lf
+*.compute text eol=lf
+*.cg      text eol=lf
