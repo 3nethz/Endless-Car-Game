@@ -15,7 +15,7 @@ public class EndlessLevelHandler : MonoBehaviour
     WaitForSeconds waitFor100ms = new WaitForSeconds(0.1f);
 
     const float sectionLength = 26;
-
+    const float curvedWorldCurvature = -10;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,7 +43,7 @@ public class EndlessLevelHandler : MonoBehaviour
             GameObject randomSection = GetRandomSectionFromPool();
 
             //Move the section into position and set it to active
-            randomSection.transform.position = new Vector3(sectionPool[i].transform.position.x, 0, i * sectionLength);
+            randomSection.transform.position = new Vector3(sectionPool[i].transform.position.x, curvedWorldCurvature, i * sectionLength);
             randomSection.SetActive(true);
 
             //Set the section in array
@@ -79,7 +79,7 @@ public class EndlessLevelHandler : MonoBehaviour
                 sections[i] = GetRandomSectionFromPool();
 
                 //Move the new section into place and activate it
-                sections[i].transform.position = new Vector3(lastSectionPosition.x, 0, lastSectionPosition.z + sectionLength * sections.Length);
+                sections[i].transform.position = new Vector3(lastSectionPosition.x, curvedWorldCurvature, lastSectionPosition.z + sectionLength * sections.Length);
                 sections[i].SetActive(true);
             }
         }

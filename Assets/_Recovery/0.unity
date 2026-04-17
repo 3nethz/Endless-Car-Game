@@ -393,7 +393,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 300
+  far clip plane: 1000
   field of view: 60.000004
   orthographic: 0
   orthographic size: 5
@@ -516,11 +516,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndlessLevelHandler
   sectionPrefabs:
+  - {fileID: 443676854611796191, guid: 24fd80473c5f9634eac2264292437a40, type: 3}
   - {fileID: 7550654190248481928, guid: d1db5c946e12fd645808c464ec57a229, type: 3}
   - {fileID: 4969719620342963145, guid: 55ad9f28ed420364cbba7d9c0b164f13, type: 3}
-  - {fileID: 6907694885900721377, guid: 3cfa544f30576f243b0643bd5208479e, type: 3}
-  - {fileID: 2098333392883508420, guid: 465c6104df63df246aa035cf070f6b2a, type: 3}
-  - {fileID: 6083017195083396254, guid: 83f80225f0f73b644ae03a97b9ca68bd, type: 3}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +741,7 @@ MonoBehaviour:
     FieldOfView: 60.000004
     OrthographicSize: 5
     NearClipPlane: 0.01
-    FarClipPlane: 300
+    FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
