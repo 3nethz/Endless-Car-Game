@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -29,6 +30,8 @@ public class CarHandler : MonoBehaviour
     //Exploded state
     bool isexploded = false;
 
+    bool isPlayer = true;
+
     //Input
     Vector2 input = Vector2.zero;
 
@@ -36,9 +39,12 @@ public class CarHandler : MonoBehaviour
     Color emisiveColor = Color.white;
     float emissiveColorMultiplier = 0f;
 
+    //Timing
+    readonly WaitForSeconds waitfor500ms = new(0.5f);
+
     void Start()
     {
-
+        isPlayer = CompareTag("Player");
     }
 
     void Update()
@@ -146,6 +152,11 @@ public class CarHandler : MonoBehaviour
 
         input = inputVector;
     }
+
+    public void setMaxSpeed(float newMaxSpeed)
+    {
+        maxForwardVelocity = newMaxSpeed;
+    }
     private Coroutine slowDownCoroutine;
     IEnumerator SlowDownTimeCO()
     {
@@ -157,7 +168,7 @@ public class CarHandler : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return waitfor500ms;
 
         while (Time.timeScale <= 1.0f)
         {
@@ -174,6 +185,13 @@ public class CarHandler : MonoBehaviour
     //Events
     public void OnCollisionEnter(Collision collision)
     {
+        if (!isPlayer)
+        {
+            if (collision.transform.root.CompareTag("Untagged"))
+                return;
+            if (collision.transform.root.CompareTag("CarAI"))
+                return;
+        }
         Debug.Log($"Hit {collision.collider.name}*");
         Vector3 velocity = rb.linearVelocity;
         explodeHandler.Explode(velocity * 45);

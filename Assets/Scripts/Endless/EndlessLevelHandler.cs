@@ -12,7 +12,7 @@ public class EndlessLevelHandler : MonoBehaviour
 
     Transform playerCarTransform;
 
-    WaitForSeconds waitFor100ms = new WaitForSeconds(0.1f);
+    readonly WaitForSeconds waitFor100ms = new(0.1f);
 
     const float sectionLength = 26;
     const float curvedWorldCurvature = -10;

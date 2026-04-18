@@ -1059,6 +1059,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Endless Section PF Variant Centre Houses
       objectReference: {fileID: 0}
+    - target: {fileID: 956195851370460679, guid: 24fd80473c5f9634eac2264292437a40, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015822714808198092, guid: 24fd80473c5f9634eac2264292437a40, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5366492958409667853, guid: 24fd80473c5f9634eac2264292437a40, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5955308273681157192, guid: 24fd80473c5f9634eac2264292437a40, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471017153142075331, guid: 24fd80473c5f9634eac2264292437a40, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893258812663566640, guid: 24fd80473c5f9634eac2264292437a40, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098527507385775036, guid: 24fd80473c5f9634eac2264292437a40, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7268469717205001271, guid: 24fd80473c5f9634eac2264292437a40, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7340022406612313261, guid: 24fd80473c5f9634eac2264292437a40, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1100,7 +1132,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 362057625934472487, guid: 24fd80473c5f9634eac2264292437a40, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7340022406612313261, guid: 24fd80473c5f9634eac2264292437a40, type: 3}
       insertIndex: -1
