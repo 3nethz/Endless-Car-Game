@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CarHandler : MonoBehaviour
@@ -10,6 +11,12 @@ public class CarHandler : MonoBehaviour
     [SerializeField]
     Transform gameModel;
 
+    [SerializeField]
+    MeshRenderer carMeshRenderer;
+
+    [SerializeField]
+    ExplodeHandler explodeHandler;
+
     //Max Values
     float maxSteerVelocity = 2;
     float maxForwardVelocity = 30;
@@ -19,8 +26,15 @@ public class CarHandler : MonoBehaviour
     float brakesMultiplier = 15;
     float steerMultiplier = 5;
 
+    //Exploded state
+    bool isexploded = false;
+
     //Input
     Vector2 input = Vector2.zero;
+
+    int _EmissionColor = Shader.PropertyToID("_EmissionColor");
+    Color emisiveColor = Color.white;
+    float emissiveColorMultiplier = 0f;
 
     void Start()
     {
@@ -29,12 +43,37 @@ public class CarHandler : MonoBehaviour
 
     void Update()
     {
+        if (isexploded)
+            return;
         //rotate car model when turning
         gameModel.transform.rotation = Quaternion.Euler(0, rb.linearVelocity.x * 5, 0);
+
+        if (carMeshRenderer != null)
+        {
+            float desiredCarEmissiveColorMultiplier = 0f;
+
+            if (input.y < 0)
+                desiredCarEmissiveColorMultiplier = 4.0f;
+
+            emissiveColorMultiplier = Mathf.Lerp(emissiveColorMultiplier, desiredCarEmissiveColorMultiplier, Time.deltaTime * 4);
+            carMeshRenderer.material.SetColor(_EmissionColor, emisiveColor * emissiveColorMultiplier);
+        }
     }
 
     private void FixedUpdate()
     {
+        if (isexploded)
+        {
+            //Apply drag
+            rb.linearDamping = rb.linearVelocity.z * 0.5f;
+            rb.linearDamping = Mathf.Clamp(rb.linearDamping, 1.5f, 10);
+
+            //Move towards the center after car is exploded
+            rb.MovePosition(Vector3.Lerp(transform.position, new Vector3(0, 0, transform.position.z), Time.deltaTime * 0.5f));
+
+            return;
+        }
+
         if (input.y > 0)
             Accelerate();
         else
@@ -106,5 +145,14 @@ public class CarHandler : MonoBehaviour
         inputVector.Normalize();
 
         input = inputVector;
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log($"Hit {collision.collider.name}*");
+        Vector3 velocity = rb.linearVelocity;
+        explodeHandler.Explode(velocity * 45);
+
+        isexploded = true;
     }
 }
