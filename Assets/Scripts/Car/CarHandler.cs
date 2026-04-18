@@ -133,10 +133,10 @@ public class CarHandler : MonoBehaviour
         {
             //Auto center car
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, new Vector3(0, 0, rb.linearVelocity.z), Time.fixedDeltaTime * 3);
-            Vector3 pos = rb.position;
-            pos.x = Mathf.Lerp(pos.x, 0, Time.fixedDeltaTime);
-            rb.MovePosition(pos);
-            Debug.Log("X velocity: " + rb.linearVelocity.x);
+            // Vector3 pos = rb.position;
+            // pos.x = Mathf.Lerp(pos.x, 0, Time.fixedDeltaTime);
+            // rb.MovePosition(pos);
+            // Debug.Log("X velocity: " + rb.linearVelocity.x);
         }
     }
 
@@ -146,7 +146,32 @@ public class CarHandler : MonoBehaviour
 
         input = inputVector;
     }
+    private Coroutine slowDownCoroutine;
+    IEnumerator SlowDownTimeCO()
+    {
+        while (Time.timeScale > 0.2f)
+        {
+            Time.timeScale -= Time.deltaTime * 2;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
 
+            yield return null;
+        }
+
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        while (Time.timeScale <= 1.0f)
+        {
+            Time.timeScale += Time.deltaTime;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+
+            yield return null;
+        }
+
+        Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+    }
+
+    //Events
     public void OnCollisionEnter(Collision collision)
     {
         Debug.Log($"Hit {collision.collider.name}*");
@@ -154,5 +179,7 @@ public class CarHandler : MonoBehaviour
         explodeHandler.Explode(velocity * 45);
 
         isexploded = true;
+
+        StartCoroutine(SlowDownTimeCO());
     }
 }
