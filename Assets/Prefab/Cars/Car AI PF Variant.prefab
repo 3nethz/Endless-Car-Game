@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2911281260101359026, guid: 11016dc24c57675429e92e3979515875, type: 3}
+      propertyPath: honkHornAS
+      value: 
+      objectReference: {fileID: 1359216206204170908}
     - target: {fileID: 5561847111574496914, guid: 11016dc24c57675429e92e3979515875, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -61,3 +65,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11016dc24c57675429e92e3979515875, type: 3}
+--- !u!82 &1359216206204170908 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7067961858044657139, guid: 11016dc24c57675429e92e3979515875, type: 3}
+  m_PrefabInstance: {fileID: 8127473595900366703}
+  m_PrefabAsset: {fileID: 0}

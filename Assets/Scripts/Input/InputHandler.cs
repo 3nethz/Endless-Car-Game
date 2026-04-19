@@ -31,7 +31,10 @@ public class InputHandler : MonoBehaviour
         carHandler.setInput(input);
 
         if (Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            Time.timeScale = 1.0f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
 }
