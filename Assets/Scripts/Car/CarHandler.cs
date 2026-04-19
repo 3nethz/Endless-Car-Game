@@ -56,12 +56,19 @@ public class CarHandler : MonoBehaviour
     //Timing
     readonly WaitForSeconds waitfor500ms = new(0.5f);
 
+    //Stats
+    float carStartPositionZ;
+    float distanceTravelled = 0;
+    public float DistanceTravelled => distanceTravelled;
+
     void Start()
     {
         isPlayer = CompareTag("Player");
 
         if (isPlayer)
             carEngineAS.Play();
+
+        carStartPositionZ = transform.position.z;
     }
 
     void Update()
@@ -85,6 +92,9 @@ public class CarHandler : MonoBehaviour
             carMeshRenderer.material.SetColor(_EmissionColor, emisiveColor * emissiveColorMultiplier);
         }
         updateCarAudio();
+
+        //Update Distance travelled
+        distanceTravelled = transform.position.z - carStartPositionZ;
     }
 
     private void FixedUpdate()
