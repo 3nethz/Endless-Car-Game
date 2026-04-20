@@ -15,6 +15,7 @@ public class CarHandler : MonoBehaviour
 
     [SerializeField]
     MeshRenderer carMeshRenderer;
+    public MeshRenderer CarMeshRenderer => carMeshRenderer;
 
     [SerializeField]
     ExplodeHandler explodeHandler;

@@ -17,16 +17,13 @@ public class UIHandler : MonoBehaviour
     //Reference
     CarHandler playerCarHandler;
 
-    void Awake()
-    {
-        playerCarHandler = GameObject.FindGameObjectWithTag("Player").GetComponent<CarHandler>();
-        playerCarHandler.OnPlayerCrashed += PlayerCarHandler_OnplayerCrashed;
-    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gameOverCanvasGroup.interactable = false;
         gameOverCanvasGroup.alpha = 0;
+        playerCarHandler = GameObject.FindGameObjectWithTag("Player").GetComponent<CarHandler>();
+        playerCarHandler.OnPlayerCrashed += PlayerCarHandler_OnplayerCrashed;
     }
 
     // Update is called once per frame
