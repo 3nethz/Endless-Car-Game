@@ -1,7 +1,5 @@
 using UnityEngine;
 using Unity.Cinemachine;
-using System;
-using UnityEditor.UI;
 
 public class PlayerCarSpawner : MonoBehaviour
 {
