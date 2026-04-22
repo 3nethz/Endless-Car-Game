@@ -61,4 +61,12 @@ public class UIHandler : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
+
+    public void OnMainMenuClick()
+    {
+        Time.timeScale = 1.0f;
+
+        SceneManager.LoadScene("Main menu");
+    }
+
 }

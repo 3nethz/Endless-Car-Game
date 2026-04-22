@@ -55,6 +55,7 @@ public class PlayerCarSpawner : MonoBehaviour
     {
         if (isMainMenu)
         {
+            instantiatedPlayerCar.transform.position = new Vector3(1, 0, 0);
             instantiatedPlayerCar.transform.Rotate(new Vector3(0, 0, 20) * Time.deltaTime);
 
             carRotation = instantiatedPlayerCar.transform.rotation;
